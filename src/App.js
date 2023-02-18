@@ -15,9 +15,15 @@ function App() {
 
   //console.log(message)
 
+
+
   return (
     <div className="App">
-      {message.message}
+      <p>
+        {message.message}
+      </p>
+      <input type="text" />
+      <button>submit</button>
     </div>
   );
 }
