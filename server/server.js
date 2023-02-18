@@ -21,11 +21,19 @@ mongoose.connect(mongoUri, { useNewUrlParser: true })
 //     res.json({ message: "hellooo" });
 // })
 
+const logMiddleware = (req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+};
+
+
 //import routes
-const userRoute = require("./Routes/user");
+const userRoute = require("./Routes/user")
+const userName = require("./Routes/name")
 
 //using that imported route
 app.use(userRoute)
+app.use(userName, logMiddleware)
 
 //start the server
 app.listen(8000, () => {
