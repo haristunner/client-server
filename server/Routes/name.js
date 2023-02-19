@@ -1,11 +1,20 @@
-const { json } = require('express');
 const express = require('express');
 const router = express.Router();
+const NameModel = require('../Models/nameModel');
 
-router.post('/name', (req, res) => {
-    const data = req.body
-    console.log(data);
-    res.send('data received successfully');
+// require('../Models/nameModel');
+
+router.post('/name', async (req, res) => {
+    try {
+        const data = new NameModel(req.body);
+        await data.save();
+        res.status(201).send(data);
+        console.log(data);
+    }
+    catch (err) {
+        res.status(401).json({ message: "error" })
+    }
+
 })
 
-module.exports = router
+module.exports = router;

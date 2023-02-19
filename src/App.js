@@ -6,7 +6,8 @@ function App() {
 
   const [message, setMessage] = useState({});
 
-  const [userName, setUserName] = useState()
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState("")
 
   useEffect(() => {
     fetch(`http://localhost:8000/message`)
@@ -19,7 +20,8 @@ function App() {
   //console.log(message)
 
   const data = {
-    userName
+    userName,
+    password,
   }
 
   const addUser = (e) => {
@@ -42,6 +44,7 @@ function App() {
         {message.message}
       </p>
       <input type="text" onChange={(e) => setUserName(e.target.value)} />
+      <input type="password" onChange={(e) => setPassword(e.target.value)} />
       <button onClick={addUser}>submit</button>
     </div>
   );
