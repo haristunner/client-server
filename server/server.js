@@ -8,8 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const mongoUri = "mongodb://hari_prasath:stHMVikz65z2io4m@ac-nvhi4sc-shard-00-00.ptzl5bn.mongodb.net:27017,ac-nvhi4sc-shard-00-01.ptzl5bn.mongodb.net:27017,ac-nvhi4sc-shard-00-02.ptzl5bn.mongodb.net:27017/?ssl=true&replicaSet=atlas-10fen0-shard-0&authSource=admin&retryWrites=true&w=majority";
-
+const mongoUri="mongodb+srv://hari:hari17@cluster0.xnlscax.mongodb.net/?retryWrites=true&w=majority"
 mongoose.set('strictQuery', true)
 
 mongoose.connect(mongoUri, { useNewUrlParser: true })
