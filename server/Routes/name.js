@@ -16,6 +16,7 @@ router.post('/login',(req,res)=>{
     const user= NameModel.findOne({name,password})
     if(user){
         console.log("nicee");
+        res.send("ok")
     }
     else{
         console.log("nooo");
