@@ -1,4 +1,5 @@
 const express = require('express');
+const { Mongoose } = require('mongoose');
 const router = express.Router();
 const NameModel = require('../Models/nameModel');
 
@@ -11,16 +12,19 @@ router.post('/name',(req, res) => {
     .catch((err)=>console.error(err))
 })
 
-router.post('/login',(req,res)=>{
-    const {name,password}=req.body;
-    const user= NameModel.findOne({name,password})
-    if(user){
-        console.log("nicee");
-        res.send("ok")
-    }
-    else{
+router.post('/login',async(req,res)=>{
+   try{
+    const name =req.body.uname;
+    const password=req.body.pass;
+    const user =await NameModel.findOne({password:password,userName:name})
+    if(!user){
         console.log("nooo");
     }
+    //console.log(user);
+   }
+   catch(err){
+    console.log(err);
+   }
 })
 
 

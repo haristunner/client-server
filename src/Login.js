@@ -8,15 +8,19 @@ export const Login = () => {
   const [pass,setPass]=useState("")
   const [valid,isValid]=useState(false)
 
+
   const data={
     uname,
-    pass
+    pass,
   }
   const check=(e)=>{
     e.preventDefault();
 
     axios.post(`http://localhost:8000/login`,data)
-    .then((res)=>isValid(true))
+    .then((res)=>{
+        res.data==="error"?(isValid(true)):isValid(false)
+        console.log(res.data);
+    })
     .catch((err)=>console.log(err))
   }
 
