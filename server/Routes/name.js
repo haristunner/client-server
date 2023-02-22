@@ -19,6 +19,11 @@ router.post('/login',async(req,res)=>{
     const user =await NameModel.findOne({password:password,userName:name})
     if(!user){
         console.log("nooo");
+        res.status(200).send({message:"error"})
+    }
+    else{
+        console.log("yeahhh!!");
+        res.status(200).send({message:"matched"})
     }
     //console.log(user);
    }
